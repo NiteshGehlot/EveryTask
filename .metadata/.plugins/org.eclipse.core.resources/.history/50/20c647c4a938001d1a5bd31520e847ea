@@ -1,0 +1,15 @@
+package com.java8;
+
+
+//@FunctionalInterface                //recommended to use to avoid ambiguity not mandatory
+public interface MyInterface {
+
+	//public abstract int add(int a,int b);
+	
+	void m1(String s);
+	int m2();
+	void m3();
+	boolean m4();
+	
+	
+}

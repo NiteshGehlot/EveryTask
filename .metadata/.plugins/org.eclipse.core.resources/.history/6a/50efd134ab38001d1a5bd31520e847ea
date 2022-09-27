@@ -1,0 +1,11 @@
+package com.java8;
+
+
+public interface FunctionalInterface {
+	
+	public abstract void display(String name);
+//	int m2();
+//	void m3();
+//	boolean m4();
+
+}

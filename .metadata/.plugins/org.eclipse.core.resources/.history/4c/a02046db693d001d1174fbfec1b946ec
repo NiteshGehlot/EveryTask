@@ -1,0 +1,22 @@
+package com.star.springdemo;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	BeanFactory factory = new XmlBeanFactory(new ClassPathResource("application.xml"));
+    	
+    	Object o = factory.getBean("emp1");
+    	Employee emp1 = (Employee) o;
+    	System.out.println(emp1);
+    	
+    }
+}

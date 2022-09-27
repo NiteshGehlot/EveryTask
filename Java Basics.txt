@@ -1,0 +1,846 @@
+JAVA
+
+package name should be like:-  domain.organization.product.type
+							eg:-com.starhealth.datatype.primitive
+							
+
+Object class is the first class in Java
+
+
+Any class having private variables and getter and setter or parameter constructor and setter/getter are called POJO class 
+or Bean class or entity class
+
+
+java.lang is the first package created in java
+java.lang is default imported by the compiler.
+System/out/print/etc keyword are present in lang package.
+
+
+Identifier are any name in the code.
+Keywords are special names in code eg:public,final,etc.
+
+
+
+Naming Conentions:-
+package name:- 					all lowercase
+class and interface name:-  	InitCap
+method name and variable name:- camelCase
+Constant name:-     			all uppercase 
+
+
+
+Interface cannot create objects and it does not have Constructor
+
+new is a operator
+
+
+Type Casting:-
+When we do typecasting from large to small then it is called Explicit Typecasting or narrowing eg:- Convert Int to byte.
+
+When we do typecasting from small to large it is called Implicit Typecasting or widening eg:- Convert byte to Int.
+
+
+
+
+
+
+Types of Variables:-
+1)Primitive Variable,
+2)Reference Variable:-Instance,Static and Local
+JVM initializes value for instance and static varible, it cannot initialize value for local variable.
+Types of Reference variable:-
+	i)	Local	:-Variable declared and initialized within the block/method or declared as parameter.
+	ii)	Static	:-Variable declared with Static Keyword is called Static variable.We can use static variable in non-static method.
+				  Initializing value is not compulsory for static variable.
+	iii)Instance:-Variable declared inside the class without static keyword.
+				  If we want to use instance variable in static method we directly can make variable as static or we can create 
+				  Object of the class and refer the varible through the classs and use instance variable inside static method.
+				  Initializing value is not compulsory for instance variable.
+				  When a class is called it checks whether there is instance variable is present or not ,next it creates or got to the copy of instance variable.
+				  
+	Instance VS Static:-
+	
+				  
+				  
+Types of Access Modiifer:-
+1)Public	:-universal,access outside the package.
+2)Private	:-Access within a program(class)
+3)Protected	:-confusing,it can have both properties i.e public and default.Can access within a package,can access in 
+			  another class using inheritance. 
+4)default	:-not writing any modifier it is default.Access within a package.
+
+
+this keyword is used to refer to the current class object
+
+
+super() - refer to immediate parent class and empty parenthesis refers to default constructor
+
+Inheritance:-
+In Java one class can extend only one class
+In Java an interface can extend multiple interface as parent
+A class can implement multiple interfaces
+eg:-
+interface I1{
+	public abstract void m1();
+}
+interface I2 extends I1{
+	public abstract void m2();
+}
+interface I3 extends I1,I2{
+	public abstract void m3();
+}
+
+class Demo implements I1,I2,I3{
+	void m1(){
+	//logic
+	}
+	void m2(){
+	//logic
+	}
+	void m3(){
+	//logic
+	}
+}
+if we directly implement child class we have to write the methods of parent and child class also.
+class Test implements I3{
+	void m1(){
+	//logic
+	}
+	void m2(){
+	//logic
+	}
+	void m3(){
+	//logic
+	}
+}
+
+-------------------------------------------------------------------------------------------------------------
+
+Java LIBRARY:-
+java.lang.*;
+Object
+String
+StringBuffer
+StringBuilder
+Wrapper class ex:Integer,Byte,Short,Character,Long,Double,Float
+System class
+
+java.util.*;
+Scanner class
+Date class
+
+java.time.*;(introduced in java 8 updated of date class)
+Date and time classes
+
+--------------------------------------------------------------------------------------------------------------
+
+Object:-
+Object is a super most class/1st class in Java,every class extends or inherit properties from Object class
+Only default constructor is available in Object class.
+ex:-
+public Object(){
+		//generating hashcode
+		//memory allocation
+		//creating copy of instance var
+		//other logics
+}
+methods:-
+toString(){}
+	1.For displaying hascode of an object
+	2.For typeCasting(change datatype to String)
+	3.We can override toString method
+	Note:-
+	Example:-
+	reference object data type converting to String
+	Integer n = new integer(99);
+	String s = n.toString(); // "99"
+	reference  data type converting to String
+	int id = 99;
+	String s1 = eid+"";
+	
+	
+	
+if we override hascode method then we have to override equals method and vice versa
+if we dont override both methods then the equals method will take the JVM hashcode value to compare the objects rather 
+than the overrided hashCode value that you defined.
+hashCode()
+	Get the unique hashcode for objects in integer format
+	
+	
+equals()
+	this method compares references (not values) or hashcode of 2 objects
+	
+
+getClass()
+wait(){}
+notify(){}
+notifyAll(){}
+finalize():  whenn JVM wants to clean unused or unreferenced objects from memory ,JVM ---> finalize();--->System.gc();	
+
+
+
+If there is no constructor present then only compiler will call default constructor
+If there is already a constructor available then compiler will not create default constructor
+If we have to use default constructor then we have to define it explicitly
+
+---------------------------------------------------------------------------------------------
+
+String class:-
+It is a final class.It is used to handle string data.
+String class objects are immutable.	
+String class equals method compares values and not hashCode,and we cannot call equals method from object class.
+To compare hashcode value of string we have to use double equal(==) 
+1)Literal and Object way of witing a string:-
+		String s1 = "Java";  
+		String s2 = "Java";  //string literal //JVM may or maynot create object if already present
+		String s3 = new String("Java"); //string object  //JVM compulsory creates object
+		String s4 = new String("Java");	
+		System.out.println(s1);
+		System.out.println(s2);
+		
+		//String object:-in heap memory ,the moment we write "new" object will be created ,it has some hashcode ,reference
+		//and inside the object value(java) will be present
+		//if we create another object(s3) with same value ,JVM will create another object  irrespective of the already value present(s4) in the heap memory 
+		//String literal:-if we do not use new keyword and use literal we will have the object but this will be in SCP(String Constant Pool)
+		//this SCP is in heap memory
+		//if we create another literal(s2) with same value ,JVM will not create another object it will refer it to the already value present(s1) in the SCP 
+
+2)Concat in String
+	once we use concat we cannot get the old value back.A new object is created everytime we concat a String.
+	This new object gets the referenced to the string and the referenced from old string gets deleted.
+	ex:-
+		s2 = s2.concat("lang");
+		System.out.println(s2);
+		
+3)compareTo in string:-
+	This method is used to compare the ASCII values between the two Strings and it return the inteeger difference between the strings
+	ex:-String str1 = new String("A");
+		String str2 = new String("B");
+		
+		System.out.println(str1.compareTo(str2));   //prints -1
+		
+	Negative output shows the strings are sorted and positive output shows strings are not sorted ,we have to sort them.
+	
+	
+StringBuffer class:-
+	This class is mutable in nature.
+	The disadvantage of concat in String class is solved in StringBuffer class i.e it will not create a new object 
+	everytime we concat the string.
+	It is no thread safe.
+	Asynchronization.
+	ex:-
+		StringBuffer sb1 = new 
+
+Buffer("Java");
+		sb1.append("lang");
+		System.out.println(sb1);
+		System.out.println(sb1.reverse());
+		System.out.println(sb1.replace(0, 1, "k"));
+		
+		
+StringBuilder class:-
+	Thread safe
+	Sysnchronization
+	
+	
+--------------------------------------------------------------------------------------
+java.time.*;
+
+	In java 8 ,java.time package was made available
+method:-
+LocalDate date = LocalDate.now();
+date.getYear();
+date.getMonth();
+date.getDayOfWeek();
+date.getDayOfYear();
+
+----------------------------------------------------------------------------------------
+
+Exception Handling:- Exception occurs only at runtime
+
+Checked Exception(Compile Time) :- already known exceptions to compiler.These exception are already known and can be called upon
+for eg:-SQL Exception,FileNotFoundException,etc
+Unchecked Exception(RunTime) :- compilers do not know the exceptions exists or not for eg:- logical error(500/0).These exception are known only at realTime or runTime 
+for.eg:- Arithmetic exception,NullPointer Exception
+
+Exception class is the parent class of all other exceptions
+Throwable class is the parent class of Exception class annd Object class is the parent of Throwable class
+
+printStackTrace() method is used to print the error message to know what error has occured
+
+We can write only 1 try and multiple catch blocks while handling a exception.
+
+For displaying error messages we use "System.err.println()" to print messages in red colour.
+
+try catch finally keyword:-
+try(write the logic)
+catch(to catch the exception)
+finally(this block will print irrespective of the exception)
+
+throws keyword:-  It will not handle the exception.It throws exception from callee to the caller
+throw keyword:-   It is used to throw any exception manually or explicitly.It is used for userdefined exception
+				  For eg:- 
+				  throw new ArithmeticExp();
+				  
+
+User dEfined exception:-
+		throw new LowBalanceException(); -->exception raise/occured
+		try{
+		//handle above exception
+		}
+		catch(){
+		//plz deposit some amount your balance is low
+		}
+
+Note:-Runtime Exception class is the parent of all unchecked exception in java.
+if you find exception is one of the child of runtime exception then it is unchecked exception else it is checked exception
+
+---------------------------------------------
+
+Multithreading:-
+1)Process based multitasking
+2)Thread based multitasking
+Thread is a peice of code or part of a program.
+Two ways of implementing:-
+1)by extending Thread class
+2)by implementing Runnable Interface
+
+java.lang.*;
+interface Runnable{
+public void run();
+}
+class Thread implements Runnable{
+//overloaded constructors
+public void run(){
+	//empty
+	}
+	start(){}
+	setName();getName();
+	setPriority();getPriority();
+	currentThread();sleep();join();yield();,etc
+	}
+	
+	
+	
+	-----------------------------------------
+
+	
+Whenever a waiting thread is calledor disturbed then "Interrupted ExCeption" will occur.
+
+All thread logic are written in run method
+
+We have two options to use thread
+1)using extends Thread
+2) implements Runnable
+
+2nd method is more preferable than 1 as extending Thread class will be having more dependency wheras implementing Runnable will have less dpeendency
+
+
+
+If a object is acesses by multiple objects at same time then this object is not thread safe also known as asynchronization.
+
+If a object is accessed by one thread then the second thread should be in waiting to access the object this can be done using synchronization.
+synchronized word is used for synchronization.Peformance can be decreased and deadlock can occur
+eg:-	public synchronized void run() {      //this method can be used to synchronize whole method
+		
+	//	synchronized (this) {      //this method can be used to synchronize some lines of code       
+			
+			//this keyword refers to current class object
+		if(seats>0) {
+		System.out.println("Seat allocated to "+Thread.currentThread().getName());
+		seats = seats-1;
+		}
+	//	}
+
+		System.out.println("No. of seats left : "+seats);
+	}
+
+
+
+
+Note:-API means predefined interfaces,methods
+
+Note:-All Wrapper classes implements Comparable interface and overrides compareTo() method.
+---------------------------------------------------------------------------------------------------------------------------------
+
+Comparator Interface:-
+We can implement comparator interface in new class rather like comparable which is needed to go to the required class and impleemtn that  in the class.
+Comparator class overrides two methods compare method and equals method.Compiler doesnt give error to implement equals method in the class as equals method is already 
+writter in parent class(i.e Object class).
+
+
+------------------------------------------------------------------------------------------------------------------------------
+Collections ---> List
+		 Queue
+		 Set
+
+List:---->1)ArrayList
+	  2)LinkedList
+	  3)Vector --->Stack
+
+------------------
+HashSet:-
+It inserts element according to hashcode.
+null allowed.
+duplicate not allowed.
+datastructure is HashTable.
+
+LinkedHashSet:-
+It is a combination of linked list and hashset .
+null allowed.
+duplicate not allowed.   (feature of hashset)
+insertion order is preserved.  (feature of linkedlist)
+datastructure is combination of doubly linked list and hashtable.
+
+
+TreeSet:-
+data structure is balanced tree. 
+Duplicate objects are not allowed. 
+Insertion order is not preserved and it is based on some sorting order of objects. 
+Heterogeneous objects are not allowed if we are trying to insert heterogeneous objects then we will get ClassCastException,
+as it is printed using some sorting order which can make confusion on how to print.
+Null insertion is possible(only once).
+TreeSet implements Comparable interface.
+If we want Hetergeneous objects to be allowed then the Heterogenous class has to implement Comparable interface and override compareTo() method,also we can use Comparator interface.
+
+-----------------
+HashMap:-
+Combination of List and Set family.
+Map comes in key-value pair.
+Data structure is hashtable.
+Key uses Set family features and Value uses List family features.
+Duplicate keys are not allowes but duplicate values can be allowed.
+Recommended to use key as simple such as integer,string,long.
+Map interface is not child interface of Collection and hence we can’t apply Collection interface methods here.
+Null allowed for keys and value.
+
+
+HashTable:-
+Initial size of hashtable is 11.
+It is a legacy class i.e thread safe.
+Data structure is hashtable.
+Null is not allowed for both key and value otherwise we will get NullPointerException. 
+Heterogeneous objects are allowed
+duplicate keys are allowed but duplicate values are not allowed.
+
+----------------------------------------------------------------------------------------------------------
+
+JAVA 8 Features:-
+1.java.time.*; package
+2.Functional Interface 
+ -> Static and Default methods
+3.Lambda Expression
+4.Method Reference
+5. Stream API
+
+
+
+Functional Interface:-
+Its an interface which can have one and only one abstract method,and implementation will be done by using Lambda expression.
+
+->Lambda Exression is the implementation of any functional interface from JAVA8.
+syntax:-  ()->{};
+Return type for any lambda expression is functional interface type.
+
+Type of Functional Interface:-
+==============================
+1.Consumer Functional Interface(Takes value and does not return it)
+	if it takes 2 parameter then it is called biconsumer functional interface.
+	eg:-
+	void methodName(int i);   ,setter method
+	
+2.Supplier Functional Interface(Return value and does not take parameters)
+	eg:-
+	int methodName();   , getter method
+	boolean methodName(); ,boolean isValied();
+	
+3.Predicate Functional Interface(return type is BOOLEAN and it has some parameters)
+	eg:-
+	boolean methodName(long); boolean verify(long l);
+	
+4.Function Functional Interface(Take prameter and return value and return type can be anything)
+	eg:-
+	int methodName(String name);  , int findLength(String name)
+
+
+
+
+default method in Interface:-
+default method can be called only by creating object or by implementing the interface in the class.
+eg:-
+	mi.m2();           //create a object of the interface first and then call default method.
+
+
+Static method in interface:-
+static method can be called directly without creating a object or implementing the interface in class.
+eg:-
+	MyInterface.m1();   //this can be written anywhere in the class.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+JAVA STREAM API
+===============
+Stream:Flow of data
+java.util.stream.*;
+
+Stream Interface
+
+Data can be inside
+Arrays
+Collections
+
+
+class Address{
+
+String city;
+
+}
+---------------------
+
+class Employee {
+
+int eid;
+String ename;
+Address address;
+
+//setter and getters
+
+}
+----------------------
+Early/Eager Loading
+
+Employee e1 = new Employee(); --> new Address(); // always
+
+
+
+
+Lazy Loading
+---------------
+Employee e1 = new Employee();
+
+Address a1 = new Address(); // on demand
+
+
+
+
+
+Optional<T> 
+
+Optional return types used in java which return the expected value , if expected values is not return then
+some default value can be return by us using optional.
+
+
+ Optional<String> getName(){
+
+		//return "Javeed";  // either this
+
+
+		return "Sorry";  // or this
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Database:-
+=========
+Database are digital storages where data will be stored in tabular format.
+Database Softwares/server:-
+ex:-Oracle,Mysql,DB2,H2 DB,MS SQL,Postgres DB,No SQL,etc
+
+No SQL databases which stores data in files/documents in JSON format.
+ex:-mongodb,casata,dynamo db,etc
+
+SQL is a Structured Query Language
+
+DDL:-Data Definition Lanuage (work with table structure)
+CREATE,ALTER,DROP,TRUNCATE
+
+DML:-Data Manipulation Language (work with table data)
+INSERT,UPDATE,DELETE
+
+DQL:-Data Query Language  (read data)
+SELECT
+
+TCL:- Transaction Control Language
+COMMIT,SAVEPOINT,ROLLBACK
+
+mysql datatypes:-
+int,varchar,char,decimal,date,datetime,boolean
+
+Constraints:-
+PRIMARY KEY = NOT NULL + UNIQUE
+FOREING KEY  // use to refer parent table from child table
+NOT NULL
+UNIQUE
+
+
+
+commands:-
+start transaction;               //we can rollback any command after using this.auto commit/save is disabled using this.
+commit;                          //save command
+rollback;                        //undo the previous command.
+
+
+Aggregate/group functions:-
+sum,min,max,avg,count
+
+
+
+SQL Queries:
+------------
+Create Database
+-> CREATE DATABASE  database_name;
+-> show databases; // show all  existing databases
+-> use  database_name;  // switch to any database using use command
+
+Create Table:
+
+CREATE TABLE  Employee(eid integer(3)  primary key, ename varchar(20) ,salary decimal(7,2) , job varchar(12) , doj date);
+
+
+DROP TABLE employee;
+
+ALTER --> Add,Modify,Drop
+
+ALTER TABLE Employee  Add(comm  integer(5));
+
+ALTER TABLE Employee  Modify job  varchar(20);
+
+ALTER TABLE Employee Drop column   column_name;
+
+------------------------------------------
+
+TRUNCATE TABLE Employee;  // it will trunc/ delete all records from Employee table
+
+-----------------------------------------
+
+
+
+DML: Data Manipulation Lang
+INSERT , UPDATE , DELETE
+-> When ever we want to work with table data we can use DML commands
+
+
+
+INSERT - insert new records into the tables
+
+->INSERT INTO EMPLOYEE values(101,'King',50000.00,'President','2001-01-26',null);
+
+UPDATE - update existing records in tables
+
+-> update employee set salary = 30000 , comm = 500 where eid = 101;
+
+DELETE - to remove/delete records from the tables
+
+-> delete from employee where eid = 101;
+
+============================================================
+
+
+DQL/DRL : Data Retrieval lang
+
+SELECT
+-> Selecting/Fetching Data from tables
+
+
+select all
+-> select * from employee;
+-> select eid,ename,salary from employee;
+
+------------------------------------------------------------------------------------------------------
+JDBC:-
+=====
+JDBC is an API
+it is available in java.sql.*;
+Interfaces in jdbc are:-
+Driver,Connection,Statement,PreparedStatement,CallableStatement,ResultSet,etc
+Classes in jdbc are:-
+DriverManager , Date  ,etc.
+
+
+JDBC in 4 Types:-
+1.Type1 Driver
+2.Type2 Driver
+3.Type3 Driver
+4.Type4 Driver  //we use this
+
+
+
+
+JDBC is an API
+
+java.sql.*;
+
+Interfaces
+-----------
+Driver
+Connection
+Statement
+PreparedStatement
+CallableStatement
+ResultSet
+
+Classes
+--------
+DriverManager 
+Date 
+
+
+
+JDBC Steps:-
+1)Register Driver class or Load Driver class
+
+2)Get the connection using DriverManager class
+
+3)Create any statement as per requirements
+  statement or preparedstatement or callable statement
+  
+4)Execute query(select or non-select query)
+  Select Query use executeQuery() ethod
+  Non-select query use executeUpdate() method
+  
+5)close the connection
+
+
+
+IP-ADDRESS:
+----------
+Its an unique identity or number given to every machine , it is use to identify machines on networks
+Ex:  1.27.0.129 , 23.77.99.12
+
+PORT NO.
+---------
+Unique number given to every application in a machine.
+
+8080 , 9090 , 0000 - 9999
+
+3306- mysql port
+
+
+
+
+
+Note: Step-1 in JDBC can be replace with Class.forName("com.mysql.cj.jdbc.Driver");// load register class
+But remember step1 in jdbc is optional , we can run jdbc without registerDriver() and without Class.forName();
+
+ JDBC Statements:
+------------------
+1. Statement
+Statement is used for executing Static Queries , 
+Any query which does not have inputs/parameters known as Static Query.
+Ex: Select * from Employee;
+Ex: Create table Product(pid int,pname varchar(12));
+
+Use Statement for Static Select queries and for DDL(CREATE,ALTER,DROP ,TRUNCATE)
+
+
+
+
+
+2. PreparedStatement
+It is used for dynamic queries as well as use for static queries.
+It uses input parameter concepts known as Positional params (?)
+
+insert into employee(eid,ename,salary,job,doj,comm) values(?,?,?,?,current_date,?)
+
+update employee set ename = ? , salary =? , job =?, doj =? , comm =? where eid =?;
+
+
+select * from employee where eid =?;
+
+delete from employee  where eid =?;
+
+
+select * from employee;
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+Maven Project:-
+artificat id(project_name) and group id(domain name,company name) is used to maintain unique identity to the project.
+
+------------------------------------------------------------------------------------------
+Spring:-
+Scopes:-
+1)Singleton
+2)Prototype
+3)Request           -
+4)Application       - these 3 can be used with web
+5)Session           -
+6)Websocket
+7)Thread
+
+---------------
+Annotation:-
+
+Below are all class level annotations
+Required
+
+Resource
+PostConstruct
+PreDestroy
+
+---------Annotation for Beans----------
+@Component                   -entity class/beans class/normal POJO class it  will help ioc to create object of that class and it will store in heap memory
+@ComponentScan         - it is used to scan the class where component annotation is used or objectts have been created
+						@ComponentScan(basePackages = {"com.springannotations.*"})   //general syntax
+
+
+@Service :-               it is a component annotation only but to avoid conflicts between special classes and normal classes we use 
+						  @Service annotation for service layers.It will also create objects .
+
+
+
+@Repository:-            it is used for dao classes, same as component annotation
+
+
+@Controller          - It is used for controller class or servlets .it also creates objects
+
+---------Annotation to Configure beans-----
+@Configuration and @Bean should be used combinely(class and method level)
+where classes are created-->but no annotation used in these classes-->but we have to create object maintain them as beans-->then use @Bean and @Configuration
+
+
+
+@Configuration(can make any class as configuration class)  - will help to scan all other class and act as supervisor and get the object
+
+
+To get objects from classes through Configuration annotation:-(write below in main class)
+		ApplicationContext context =  new AnnotationConfigApplicationContext(SpringAnnotations.class);
+
+        Books books = context.getBean(Books.class);
+
+
+@Autowired:- created object automatically just declare the object name
+			eg:-@Autowired
+			    IBookRepo repo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+Singleton:- Means only one object is created irrespective of the times the class is called usin different class
+Prototype:- Means different objects are created as many times the class is called using deifferent objects

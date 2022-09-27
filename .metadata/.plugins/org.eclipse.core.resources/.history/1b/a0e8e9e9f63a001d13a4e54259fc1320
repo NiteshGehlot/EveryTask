@@ -1,0 +1,151 @@
+package com.jdbc.cruds;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CrudOperationDAO { // DAO - Data Access Object class
+
+	Connection conn = DBUtil.getDBConnection();
+
+	public int addBook(Books emp) {
+
+		int count = 0;
+
+		try {
+			String insertQuery = "insert into employee(eid,ename,salary,job,doj,comm) values(?,?,?,?,current_date,?)";
+			PreparedStatement pstmt = conn.prepareStatement(insertQuery);
+
+			pstmt.setInt(1, emp.getBid());
+			pstmt.setString(2, emp.getBname());
+			pstmt.setDouble(3, emp.getBprice());
+
+			count = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return count;
+
+	}
+
+	public int updateBook(Books emp) {
+
+		int count = 0;
+
+		try {
+			String updateQuery = "update employee set ename =? , salary = ? where eid = ?";
+			PreparedStatement pstmt = conn.prepareStatement(updateQuery);
+
+			pstmt.setString(1, emp.getBname());
+			pstmt.setDouble(2, emp.getBprice());
+			pstmt.setInt(3, emp.getBid());
+
+			count = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return count;
+
+	}
+
+	public int deleteBookById(int eid) {
+
+		String deleteQuery = "delete from employee where eid = ?";
+
+		PreparedStatement pstmt;
+		int deleteCount = 0;
+		try {
+			pstmt = conn.prepareStatement(deleteQuery);
+
+			pstmt.setInt(1, eid);
+
+			deleteCount = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return deleteCount;
+
+	}
+
+	public Books selectBookById(int bid) {
+
+		String selectQuery = "select * from books where eid = ?";
+
+		PreparedStatement pstmt;
+
+		Books book = new Books();
+
+		try {
+			pstmt = conn.prepareStatement(selectQuery);
+
+			pstmt.setInt(1, bid);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				book.setBid(rs.getInt("bid"));
+				book.setBname(rs.getString("bname"));
+				book.setBprice(rs.getDouble("bprice"));
+				book.setBpdate(rs.getDate("bpdoj"));
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return book;
+
+	}
+
+	public List<Books> selectAllEmployeees() {
+
+		String selectQuery = "select * from books";
+
+		PreparedStatement pstmt;
+
+		List<Books> list = new ArrayList<Books>();
+		
+		try {
+			pstmt = conn.prepareStatement(selectQuery);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			
+
+			while (rs.next()) {
+
+				Books book = new Books();
+				book.setBid(rs.getInt("bid"));
+				book.setBname(rs.getString("bname"));
+				book.setBprice(rs.getDouble("bprice"));
+				book.setBpdate(rs.getDate("bpdate"));
+
+				list.add(book);
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+
+}

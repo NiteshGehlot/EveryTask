@@ -1,0 +1,7 @@
+package com.json.json_java.com.json.json_java;
+
+public class Criteria {
+	private String id;
+	private List<Rule> rules;
+
+}

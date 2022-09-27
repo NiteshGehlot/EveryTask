@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- Setter method injection -->
+    
+    <bean id="emp1" class="com.star.springdemo.Employee">
+    
+    <property name="eid" value="101"></property>
+    <property name="ename" value="Nitesh"></property>
+    <property name="salary" value="12000"></property>
+    
+    </bean>
+    
+    
+</beans>

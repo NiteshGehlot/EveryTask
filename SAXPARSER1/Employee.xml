@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<employee>
+
+
+    <student sid="101">
+        <firstName>Nitesh</firstName>
+        <lastName>Gehlot</lastName>
+        <salary>8000</salary>
+    </student>
+
+    <student sid="102">
+        <firstName>Sumit</firstName>
+        <lastName>Pimpare</lastName>
+        <salary>6000</salary>
+    </student>
+
+    <student sid="103">
+        <firstName>Snehal</firstName>
+        <lastName>Kathale</lastName>
+        <salary>6500</salary>
+    </student>
+
+
+</employee>

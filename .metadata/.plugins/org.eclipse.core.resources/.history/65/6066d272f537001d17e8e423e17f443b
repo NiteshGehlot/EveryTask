@@ -1,0 +1,28 @@
+package com.keyboard;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadingFile {
+
+	public static void main(String[] args) {
+
+		try {
+			FileReader reader = new FileReader("Input.txt");
+			
+			int n = reader.read();
+			System.out.println(n);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

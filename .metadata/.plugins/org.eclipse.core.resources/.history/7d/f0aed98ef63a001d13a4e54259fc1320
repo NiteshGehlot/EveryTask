@@ -1,0 +1,82 @@
+package com.jdbc.cruds;
+
+import java.sql.Date;
+
+public class Books {
+	
+	
+	private  int bid;
+	private String bname;
+	private double bprice;
+	private  Date bpdate;
+	
+	
+	public Books() {
+		
+		
+	}
+
+
+	public Books(int bid, String bname, double bprice, Date bpdate) {
+		super();
+		this.bid = bid;
+		this.bname = bname;
+		this.bprice = bprice;
+		this.bpdate = bpdate;
+	}
+
+
+	public int getBid() {
+		return bid;
+	}
+
+
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+
+
+	public String getBname() {
+		return bname;
+	}
+
+
+	public void setBname(String bname) {
+		this.bname = bname;
+	}
+
+
+	public double getBprice() {
+		return bprice;
+	}
+
+
+	public void setBprice(double bprice) {
+		this.bprice = bprice;
+	}
+
+
+	public Date getBpdate() {
+		return bpdate;
+	}
+
+
+	public void setBpdate(Date bpdate) {
+		this.bpdate = bpdate;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Employee [bid=" + bid + ", bname=" + bname + ", bprice=" + bprice + ", bpdate=" + bpdate + "]";
+	}
+
+
+	
+
+
+	
+	
+	
+
+}
