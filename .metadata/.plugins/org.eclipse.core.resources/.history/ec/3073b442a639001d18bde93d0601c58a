@@ -1,9 +1,0 @@
-package com.json.json_java.com.json.json_java;
-
-public class Condition {
-	private String type;
-	private String operator;
-	private String value;
-	
-
-}

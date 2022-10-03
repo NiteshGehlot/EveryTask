@@ -13,6 +13,7 @@ public class Books {
     private double bprice;
 
     @Autowired
+
     private Product pname;
 
     public Product getPname(){

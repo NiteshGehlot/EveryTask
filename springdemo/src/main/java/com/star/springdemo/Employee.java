@@ -1,5 +1,6 @@
 package com.star.springdemo;
 
+
 public class Employee {          //POJO,BEAN
 	 
 	private int eid;

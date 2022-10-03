@@ -814,7 +814,7 @@ where classes are created-->but no annotation used in these classes-->but we hav
 
 
 
-@Configuration(can make any class as configuration class)  - will help to scan all other class and act as supervisor and get the object
+@Configuration(can make any class as configuration class)  - will help to scan all other class and act as supervisor and get the object/initialting beans
 
 
 To get objects from classes through Configuration annotation:-(write below in main class)
@@ -823,14 +823,12 @@ To get objects from classes through Configuration annotation:-(write below in ma
         Books books = context.getBean(Books.class);
 
 
-@Autowired:- created object automatically just declare the object name
+@Autowired:- created object automatically just declare the object variable name
 			eg:-@Autowired
 			    IBookRepo repo;
-
-
-
-
-
+				
+@Autowired can be said as an alternative for getBean .
+getBean is used to create objects in main and @Autowired is used to create objects in other class.
 
 
 
@@ -844,3 +842,83 @@ To get objects from classes through Configuration annotation:-(write below in ma
 
 Singleton:- Means only one object is created irrespective of the times the class is called usin different class
 Prototype:- Means different objects are created as many times the class is called using deifferent objects
+
+
+
+
+
+
+
+
+
+
+SpringBoot:-
+===========
+Create Maven Project -->search and copy dependency in pom.xml -->
+For spring booot we have 2 options - maven or gradle and minimum version required is 8
+Predefined list of dependency are availble in spring boot
+
+SpringBoot uses Embeded Webserver i.e Tomcat server
+It uses Embeded Databse known as H2 DB.
+
+It does not support xml configuration.
+It supports properties/yml files.
+
+It can support xml by adding 
+
+Featurees:-
+Spring Starters
+Auto Confiurations
+CLI Support
+Actuator Support
+YAML and Properties
+Cloudier
+Embedded Tomcat Server
+Layered Architecture
+Faster and Smarter
+
+
+Ways to create SPring boot application:-
+1)Spring Starter in STS 
+2)Online Spring Initailizer
+3)Using Command
+
+
+
+SpringBoot Annotation:-
+@SpringBootApplication
+@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+@Service
+@Repository
+
+
+JPA Repository:-
+@Entity
+@TABLE
+@Column
+@Id
+Predefined Interfaces for JPA
+1)Repository<Entity,Id>
+1.1)CrudRepository<Entity,Id>
+1.1.1)JpaRepository<Entity,Id>
+
+CRUD OPERATIONS IN JPA(REST API):-
+1.Insert and Update    ----         save(Entity object);
+2.Select by id         ----         Entity findById(id);
+3.select all           ----         List<Entity> findAll();
+4.delete by id         ----         void deleteById(id);
+
+
+
+
+
+
+
+
+SQL:-                                                               JPQL:-
+we consider tables                                                  we consider entity/pojo(we dont have to write column and table name else we consider property name(variabl name) and class name)
+select column1,column2,etc from Table;                              select e.prop1,e.prop2 from Entity e;
+select eid,ename,etc from Emp_details;                              select e.eid,e.ename,e.etc from Employee e;

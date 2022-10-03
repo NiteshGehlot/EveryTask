@@ -57,4 +57,6 @@
     <fullyQualifiedTypeName name="org.springframework.core.io.ClassPathResource"/>
     <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
     <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
+    <fullyQualifiedTypeName name="org.xml.sax.SAXParseException"/>
+    <fullyQualifiedTypeName name="org.xml.sax.SAXException"/>
 </qualifiedTypeNameHistroy>

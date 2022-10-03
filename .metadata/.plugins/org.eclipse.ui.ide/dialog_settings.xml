@@ -122,6 +122,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\Training\Java FSD\Java\SpringWeb"/>
 			<item value="C:\Users\niteshmanish.gehlot\Downloads\StarHealth-master-1\StarHealth-master\JDBC_DEMO_UPDATED"/>
 			<item value="C:\Users\niteshmanish.gehlot\Downloads\StarHealth-master\StarHealth-master\JDBC_DEMO_UPDATED"/>
 			<item value="D:\Training\Java FSD\Java\NiteshTask_19-09-2022"/>

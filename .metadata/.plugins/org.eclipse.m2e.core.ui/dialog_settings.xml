@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\Training\Java FSD\Java\springdemo\pom.xml"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -25,6 +26,7 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.star"/>
 			<item value="com.star.myapp"/>
 			<item value="com.json.json_java"/>
 		</list>

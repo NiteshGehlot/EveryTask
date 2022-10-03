@@ -1,8 +1,0 @@
-package com.json.json_java.com.json.json_java;
-
-public class Rule {
-	private String fieldName;
-	private String fieldType;
-	private Condition condition;
-
-}
